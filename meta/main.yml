@@ -1,0 +1,15 @@
+---
+galaxy_info:
+  author: Alexandre Eher
+  description: Role to create and restore snapshots from mysql databases. They are stered into S3 bucket to allow restores from any server.
+  license: BSD
+  min_ansible_version: 1.5
+  platforms:
+  - name: Ubuntu
+    versions:
+      - all
+  categories:
+    - development
+    - database
+    - database:sql
+dependencies: []

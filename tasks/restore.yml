@@ -1,0 +1,7 @@
+---
+# file: tasks/restore.yml
+- name: Get the dump file from s3 bucket
+  s3: bucket="{{ eher_mysql_snapshot_s3_bucket }}" dest="{{ eher_mysql_snapshot_dump_path }}/{{ eher_mysql_snapshot_name }}.{{ eher_mysql_snapshot_dump_extension }}" object="{{ eher_mysql_snapshot_name }}.{{ eher_mysql_snapshot_dump_extension }}" mode=get aws_access_key="{{ eher_mysql_snapshot_aws_access_key }}" aws_secret_key="{{ eher_mysql_snapshot_aws_secret_key }}"
+
+- name: Restore database from local dump file
+  mysql_db: name="{{ eher_mysql_snapshot_database }}" state="import" target="{{ eher_mysql_snapshot_dump_path }}/{{ eher_mysql_snapshot_name }}.{{ eher_mysql_snapshot_dump_extension }}" login_user="{{ eher_mysql_snapshot_username }}" login_password="{{ eher_mysql_snapshot_password }}"

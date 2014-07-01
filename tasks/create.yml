@@ -1,0 +1,7 @@
+---
+# file: tasks/create.yml
+- name: Create local dump file from database
+  mysql_db: name="{{ eher_mysql_snapshot_database }}" state="dump" target="{{ eher_mysql_snapshot_dump_path }}/{{ eher_mysql_snapshot_name }}.{{ eher_mysql_snapshot_dump_extension }}" login_user="{{ eher_mysql_snapshot_username }}" login_password="{{ eher_mysql_snapshot_password }}"
+
+- name: Store the dump file into s3 bucket
+  s3: bucket="{{ eher_mysql_snapshot_s3_bucket }}" src="{{ eher_mysql_snapshot_dump_path }}/{{ eher_mysql_snapshot_name }}.{{ eher_mysql_snapshot_dump_extension }}" object="{{ eher_mysql_snapshot_name }}.{{ eher_mysql_snapshot_dump_extension }}" mode="put" aws_access_key="{{ eher_mysql_snapshot_aws_access_key }}" aws_secret_key="{{ eher_mysql_snapshot_aws_secret_key }}"
