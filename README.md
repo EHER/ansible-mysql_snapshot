@@ -6,7 +6,9 @@ Role to create and restore snapshots from mysql databases. They are stored into 
 Requirements
 ------------
 
-Requires Boto and MySQLdb Python package on the remote host. For Ubuntu, this is as easy as apt-get install python-boto python-mysqldb. (See [apt](http://docs.ansible.com/apt_module.html))
+Requires Boto and MySQLdb Python package on the remote host.
+The role try install them for you. :)
+
 
 Role Variables
 --------------

@@ -1,0 +1,6 @@
+---
+- name: Install required packages
+  apt: pkg={{ item }}
+  with_items:
+    - python-mysqldb
+    - python-boto

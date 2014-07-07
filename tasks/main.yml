@@ -1,4 +1,6 @@
 ---
+- include: install.yml
+
 - name: Ensure that the snapshot directory exists
   file: path={{ eher_mysql_snapshot_dump_path }} state=directory
 
